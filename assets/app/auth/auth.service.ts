@@ -18,9 +18,9 @@ export class AuthService {
         const headers = new Headers({'Content-Type': 'application/json'});
         return this.http.post(this.herokudomain + '/user', body, {headers: headers})
             .map((response: Response) => response.json())
-            .catch((error: Response) => {
-                this.errorService.handleError(error.json());
-                return Observable.throw(error.json());
+            .catch((theError: Response) => {
+                this.errorService.handleError(theError.json());
+                return Observable.throw(theError.json());
             });
     }
 
@@ -29,9 +29,9 @@ export class AuthService {
         const headers = new Headers({'Content-Type': 'application/json'});
         return this.http.post(this.herokudomain + '/user/signin', body, {headers: headers})
             .map((response: Response) => response.json())
-            .catch((error: Response) => {
-                this.errorService.handleError(error.json());
-                return Observable.throw(error.json());
+            .catch((theError: Response) => {
+                this.errorService.handleError(theError.json());
+                return Observable.throw(theError.json());
             });
     }
 

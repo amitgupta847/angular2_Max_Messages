@@ -33,9 +33,9 @@ export class MessageService {
                 this.messages.push(message);
                 return message;
             })
-            .catch((error: Response) => {
-                this.errorService.handleError(error.json());
-                return Observable.throw(error.json());
+            .catch((theError: Response) => {
+                this.errorService.handleError(theError.json());
+                return Observable.throw(theError.json());
             });
     }
 
@@ -55,9 +55,9 @@ export class MessageService {
                 this.messages = transformedMessages;
                 return transformedMessages;
             })
-            .catch((error: Response) => {
-                this.errorService.handleError(error.json());
-                return Observable.throw(error.json());
+            .catch((theError: Response) => {
+                this.errorService.handleError(theError.json());
+                return Observable.throw(theError.json());
             });
     }
 
@@ -73,9 +73,9 @@ export class MessageService {
             : '';
         return this.http.patch(this.herokudomain + '/message/' + message.messageId + token, body, { headers: headers })
             .map((response: Response) => response.json())
-            .catch((error: Response) => {
-                this.errorService.handleError(error.json());
-                return Observable.throw(error.json());
+            .catch((theError: Response) => {
+                this.errorService.handleError(theError.json());
+                return Observable.throw(theError.json());
             });
     }
 
@@ -86,9 +86,9 @@ export class MessageService {
             : '';
         return this.http.delete(this.herokudomain + '/message/' + message.messageId + token)
             .map((response: Response) => response.json())
-            .catch((error: Response) => {
-                this.errorService.handleError(error.json());
-                return Observable.throw(error.json());
+            .catch((theError: Response) => {
+                this.errorService.handleError(theError.json());
+                return Observable.throw(theError.json());
             });
     }
 }

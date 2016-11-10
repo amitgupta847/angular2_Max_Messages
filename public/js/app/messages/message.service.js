@@ -27,9 +27,9 @@ export var MessageService = (function () {
             _this.messages.push(message);
             return message;
         })
-            .catch(function (error) {
-            _this.errorService.handleError(error.json());
-            return Observable.throw(error.json());
+            .catch(function (theError) {
+            _this.errorService.handleError(theError.json());
+            return Observable.throw(theError.json());
         });
     };
     MessageService.prototype.getMessages = function () {
@@ -45,9 +45,9 @@ export var MessageService = (function () {
             _this.messages = transformedMessages;
             return transformedMessages;
         })
-            .catch(function (error) {
-            _this.errorService.handleError(error.json());
-            return Observable.throw(error.json());
+            .catch(function (theError) {
+            _this.errorService.handleError(theError.json());
+            return Observable.throw(theError.json());
         });
     };
     MessageService.prototype.editMessage = function (message) {
@@ -62,9 +62,9 @@ export var MessageService = (function () {
             : '';
         return this.http.patch(this.herokudomain + '/message/' + message.messageId + token, body, { headers: headers })
             .map(function (response) { return response.json(); })
-            .catch(function (error) {
-            _this.errorService.handleError(error.json());
-            return Observable.throw(error.json());
+            .catch(function (theError) {
+            _this.errorService.handleError(theError.json());
+            return Observable.throw(theError.json());
         });
     };
     MessageService.prototype.deleteMessage = function (message) {
@@ -75,9 +75,9 @@ export var MessageService = (function () {
             : '';
         return this.http.delete(this.herokudomain + '/message/' + message.messageId + token)
             .map(function (response) { return response.json(); })
-            .catch(function (error) {
-            _this.errorService.handleError(error.json());
-            return Observable.throw(error.json());
+            .catch(function (theError) {
+            _this.errorService.handleError(theError.json());
+            return Observable.throw(theError.json());
         });
     };
     MessageService.decorators = [

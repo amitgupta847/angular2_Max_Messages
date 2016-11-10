@@ -16,9 +16,9 @@ export var AuthService = (function () {
         var headers = new Headers({ 'Content-Type': 'application/json' });
         return this.http.post(this.herokudomain + '/user', body, { headers: headers })
             .map(function (response) { return response.json(); })
-            .catch(function (error) {
-            _this.errorService.handleError(error.json());
-            return Observable.throw(error.json());
+            .catch(function (theError) {
+            _this.errorService.handleError(theError.json());
+            return Observable.throw(theError.json());
         });
     };
     AuthService.prototype.signin = function (user) {
@@ -27,9 +27,9 @@ export var AuthService = (function () {
         var headers = new Headers({ 'Content-Type': 'application/json' });
         return this.http.post(this.herokudomain + '/user/signin', body, { headers: headers })
             .map(function (response) { return response.json(); })
-            .catch(function (error) {
-            _this.errorService.handleError(error.json());
-            return Observable.throw(error.json());
+            .catch(function (theError) {
+            _this.errorService.handleError(theError.json());
+            return Observable.throw(theError.json());
         });
     };
     AuthService.prototype.logout = function () {
