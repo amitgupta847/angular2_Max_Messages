@@ -10,10 +10,13 @@ import { ErrorService } from "../errors/error.service";
 export class AuthService {
     constructor(private http: Http, private errorService: ErrorService) {}
 
+    herokudomain = 'https://angular2-max-messages.herokuapp.com/';
+    otherwise = 'http://localhost:3000';
+
     signup(user: User) {
         const body = JSON.stringify(user);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('http://localhost:3000/user', body, {headers: headers})
+        return this.http.post(this.herokudomain + '/user', body, {headers: headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => {
                 this.errorService.handleError(error.json());
@@ -24,7 +27,7 @@ export class AuthService {
     signin(user: User) {
         const body = JSON.stringify(user);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('http://localhost:3000/user/signin', body, {headers: headers})
+        return this.http.post(this.herokudomain + '/user/signin', body, {headers: headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => {
                 this.errorService.handleError(error.json());
